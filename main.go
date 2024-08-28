@@ -57,12 +57,14 @@ func countPoints(receipt receipt) int {
 		points += 6
 	}
 
-	//Points for right time
+	
+	//Getting time checkpoints
 	layout := "15:04"
 	start, _ := time.Parse(layout, "14:00")
 	check, _ := time.Parse(layout, receipt.PurchaseTime)
 	end, _ := time.Parse(layout, "16:00")
 
+	//Points for right time
 	if start.Before(check) && end.After(check) {
 		points += 10
 	}
